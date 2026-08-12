@@ -27,3 +27,9 @@ func FuzzTest(f *testing.F) {
 		name(a)
 	})
 }
+
+func FuzzEqualTest(f *testing.F) {
+	f.Fuzz(func(t *testing.T, a []byte, b []byte) {
+		equalByte(a, b)
+	})
+}
