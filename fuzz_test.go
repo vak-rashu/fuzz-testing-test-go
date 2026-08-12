@@ -28,7 +28,17 @@ func FuzzTest(f *testing.F) {
 	})
 }
 
+var seedCorpus = struct {
+	a []byte
+	b []byte
+}{
+	a: []byte{1, 2},
+	b: []byte{1, 3, 5, 5, 8, 9, 6, 6},
+}
+
 func FuzzEqualTest(f *testing.F) {
+	f.Add(seedCorpus.a, seedCorpus.b)
+
 	f.Fuzz(func(t *testing.T, a []byte, b []byte) {
 		equalByte(a, b)
 	})
